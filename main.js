@@ -65,12 +65,43 @@
 //     console.log("!(x == y) = false");
 // }
 
-let p=document.querySelector("p")
-let button=document.querySelector("button")
-let input=document.querySelector("input")
+// let p=document.querySelector("p")
+// let button=document.querySelector("button")
+// let input=document.querySelector("input")
 
-button.addEventListener('click', function(){
-    let isi=input.value
-    console.log(isi)
-    p.innerHTML=isi
-})
+// button.addEventListener('click', function(){
+//     let isi=input.value
+//     console.log(isi)
+//     p.innerHTML=isi
+// })
+
+function addTask() {
+    var taskInput=document.getElementById("task");
+    var taskText=taskInput.value;
+
+    var taskList=document.getElementById("taskList");
+    var newTask=document.createElement("li");
+
+    var checkbox=document.createElement("input");
+    checkbox.type="checkbox";
+
+    var label=document.createElement("label");
+    label.textContent=taskText;
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            label.style.textDecoration="line-through";
+        } else {
+            label.style.textDecoration="none";
+        }
+    });
+
+    newTask.appendChild(checkbox);
+    newTask.appendChild(label);
+    taskList.appendChild(newTask);
+
+    taskInput.value="";
+}
+
+var addTaskButton=document.getElementById("addTaskButton");
+addTaskButton.addEventListener("click", addTask);
